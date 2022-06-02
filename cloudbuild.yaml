@@ -8,5 +8,6 @@ steps:
         'rsync',
         '-d',
         '-r',
+        '.',
         'gs://${_BUCKET_NAME}/',
       ]
