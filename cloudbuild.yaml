@@ -2,12 +2,7 @@ steps:
   - name: 'gcr.io/cloud-builders/gsutil'
     args:
       [
-        '-m',
-        '-h',
-        'Cache-Control:no-cache,max-age=0',
-        'rsync',
-        '-d',
-        '-r',
-        '.',
+        'cp',
+        'index.html',
         'gs://${_BUCKET_NAME}/',
       ]
