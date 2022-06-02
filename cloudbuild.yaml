@@ -1,0 +1,19 @@
+steps:
+  - name: node:16
+    entrypoint: yarn
+    args: ['install']
+  - name: node:16
+    entrypoint: yarn
+    args: ['build']
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      [
+        '-m',
+        '-h',
+        'Cache-Control:no-cache,max-age=0',
+        'rsync',
+        '-d',
+        '-r',
+        'build',
+        'gs://${_BUCKET_NAME}/',
+      ]
